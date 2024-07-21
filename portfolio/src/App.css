@@ -16,7 +16,7 @@
 }
 
 /************ Default Css ************/
-* {
+ * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -44,16 +44,17 @@ h1, h2, h3, h4, h5, h6 {
 
 p, a, li, button, ul {
   margin: 0;
-  padding: 0;
+  padding: 0px;
   line-height: normal;
   text-decoration: none;
 }
 
 a:hover {
-  text-decoration: none;
+  text-decoration:none;
 }
 
 img {
+  padding: 0px;
   width: 10;
   height: auto;
 }
@@ -80,16 +81,17 @@ p.success {
 
 p.danger {
 	color: red;
-}
+} 
 
 /************ Navbar CSS ************/
 nav.navbar {
-  padding: 18px 0;
-  position: fixed; /* Changed from 'flex' to 'fixed' */
+  padding: 38px 30px;
+  padding-left: 30px;
+  position: fixed; 
   width: 100%;
   top: 0;
-  z-index: 9999;
-  transition: 0.32s ease-in-out;
+  z-index:9999;
+  transition: 0.3s ease-in-out;
 }
 nav.navbar.scrolled {
   padding: 0;
@@ -103,9 +105,10 @@ nav.navbar .navbar-nav .nav-link.navbar-link {
   color: #fff !important;
   letter-spacing: 0.8px;
   padding: 0 25px;
-  font-size: 18px;
+  font-size: 20px;
   opacity: 0.75;
-  position: relative; /* Changed from 'sticky' to 'relative' */
+  justify-self:flex-start;
+  /* position: relative;  */
 }
 nav.navbar .navbar-nav a.nav-link.navbar-link:hover,
 nav.navbar .navbar-nav a.nav-link.navbar-link.active {
@@ -231,13 +234,13 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 
 /************ Media Queries ************/
-@media (max-width: 991.98px) {
+@media (max-width: 999.98px) {
   nav.navbar a.navbar-brand {
     width: auto;
   }
   nav.navbar .navbar-nav .nav-link.navbar-link {
     padding: 0 15px;
-    font-size: 16px;
+    font-size: 12px;
   }
   .navbar-text button {
     padding: 12px 24px;
