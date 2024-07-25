@@ -11,25 +11,35 @@ export const Contact = () =>{
         message: ''
     }
 
-    const handleSubmit = async(e)=>{
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setButtonText('Sending...');
-        let response = await fetch("http://localhost:5000/contact", {
-            method: "POST",
-            headers: {
-                "Content-Type": "Application/json;charset=utf-8", 
-            },
-            body: JSON.stringify(formDetails),
-        });
-        setButtonText("Send");
-        let result = response.json();
-        setFormDetails(formInitialDetails);
-        if(result.code ===200){
-            setStatus({success:true, message:"Message sent successfully"})
-        } else{
-            setStatus({success: false, message: "Something went wrong, please try again later."})
+        try {
+            let response = await fetch("http://localhost:5000/contact", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json;charset=utf-8",
+                },
+                body: JSON.stringify(formDetails),
+            });
+    
+            let result = await response.json(); // Use await here to get the result properly
+    
+            if (response.ok) {
+                setStatus({ success: true, message: "Message sent successfully" });
+            } else {
+                setStatus({ success: false, message: "Something went wrong, please try again later." });
+            }
+            
+            setFormDetails(formInitialDetails);
+        } catch (error) {
+            console.error("Error sending message:", error);
+            setStatus({ success: false, message: "An unexpected error occurred. Please try again later." });
+        } finally {
+            setButtonText("Send");
         }
     };
+    
 
     const [formDetails, setFormDetails] = useState(formInitialDetails);
     const [buttonText,setButtonText] = useState('Send');
